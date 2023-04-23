@@ -2,11 +2,6 @@ pipeline {
    agent any
 
    stages {
-      stage ('GIT Checkout'){
-        steps {
-            git changelog: false, poll: false, url: 'https://github.com/OlenaSakhanda1/DQE-CI-CD/'
-        }
-    }
 
       stage('build') {
          steps {
