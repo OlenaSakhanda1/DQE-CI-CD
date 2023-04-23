@@ -1,9 +1,13 @@
 from unittest import TestCase
+import unittest
 import pymssql 
+import xmlrunner
+import io
 
-#conn = pymssql.connect(host='Server=LENA\\sqlexpress', trusted=True, database='AdventureWorks2012', as_dict=True)
 conn = pymssql.connect(server="LENA\\sqlexpress",  user="sa", password="sa", database='AdventureWorks2012')
 cursor = conn.cursor()
+
+out = io.BytesIO()
 
 class TryTesting(TestCase):
     def test_city_count(self):
@@ -35,3 +39,8 @@ class TryTesting(TestCase):
         cursor.execute('SELECT COUNT(*) AS rows_count FROM [Production].[UnitMeasure];')
         value = cursor.fetchone()
         self.assertTrue(value[0] == 38)
+        
+if __name__ == '__main__':
+    with open('test-reports.xml', 'wb') as output:
+        runner = unittest.runner.XMLTestRunner(output=output)
+        unittest.main(testRunner=runner)
