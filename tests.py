@@ -41,6 +41,8 @@ class TryTesting(TestCase):
         self.assertTrue(value[0] == 38)
         
 if __name__ == '__main__':
-    with open('test-reports.xml', 'wb') as output:
-        runner = unittest.runner.XMLTestRunner(output=output)
-        unittest.main(testRunner=runner)
+    unittest.main(
+        testRunner=xmlrunner.XMLTestRunner(output='test-reports'),
+        failfast=False,
+        buffer=False,
+        catchbreak=False)
