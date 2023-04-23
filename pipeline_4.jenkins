@@ -4,7 +4,7 @@ pipeline {
    stages {
       stage ('GIT Checkout'){
         steps {
-            git changelog: false, poll: false, url: 'https://github.com/OlenaSakhanda1/DQE-CI-CD/tree/develop'
+            git changelog: false, poll: false, url: 'https://github.com/OlenaSakhanda1/DQE-CI-CD/'
         }
     }
 
